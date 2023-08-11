@@ -13,7 +13,10 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v3
-      - uses: brainly/action-autoupdate-branch@2.1.1
+      - uses: adRise/update-pr-branch@v0.6.0
         id: autoupdate
-        env:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        with:
+          token: ${{ secrets.ACTION_USER_TOKEN }}
+          base: 'main'
+          required_approval_count: 0
+          require_passed_checks: false
