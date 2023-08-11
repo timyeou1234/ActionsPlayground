@@ -5,9 +5,6 @@ name: CI
 # Controls when the action will run. 
 on:
   push:
-    branches:
-      - main
-
   # Allows you to run this workflow manually from the Actions tab
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -16,7 +13,6 @@ jobs:
     name: autoupdate
     runs-on: self-hosted
     timeout-minutes: 30
-    if: github.event.pull_request.draft == false
     steps:
       - uses: docker://chinthakagodawita/autoupdate-action:v1
         id: autoupdate
