@@ -14,12 +14,7 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v3
-      - uses: chinthakagodawita/autoupdate@v1.7.0
+      - uses: brainly/action-autoupdate-branch@2.1.1
         id: autoupdate
         env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          DRY_RUN: "false"
-          PR_FILTER: "all"
-          EXCLUDED_LABELS: "dependencies,wontfix"
-          MERGE_MSG: "Branch was auto-updated."
-          MERGE_CONFLICT_ACTION: "ignore"
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
