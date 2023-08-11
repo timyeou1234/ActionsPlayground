@@ -1,29 +1,20 @@
 # This is a basic workflow to help you get started with Actions
-
 name: CI
 
 # Controls when the action will run. 
 on:
-  push:
-    branches:
-      - main
+  push: {}
+  # Allows you to run this workflow manually from the Actions tab Here is the branch change
 
-  # Allows you to run this workflow manually from the Actions tab
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel 
 jobs:
   autoupdate:
     name: autoupdate
     runs-on: self-hosted
     timeout-minutes: 30
-    if: github.event.pull_request.draft == false
     steps:
-      - uses: docker://chinthakagodawita/autoupdate-action:v1
+      - uses: actions/checkout@v3
+      - uses: brainly/action-autoupdate-branch@2.1.1
         id: autoupdate
         env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          DRY_RUN: "false"
-          PR_FILTER: "all"
-          EXCLUDED_LABELS: "dependencies,wontfix"
-          MERGE_MSG: "Branch was auto-updated."
-          MERGE_CONFLICT_ACTION: "ignore"
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
