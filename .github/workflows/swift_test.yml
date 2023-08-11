@@ -9,32 +9,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Build
-        run: swift build
-      - name: Run tests
-        run: swift test
-
-  build_second:
-
-    runs-on: self-hosted
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Build
-        run: swift build
-      - name: Run tests
-        run: swift test
-
-
-  build_third:
-
-    runs-on: self-hosted
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Build
-        run: swift build
-      - name: Run tests
-        run: swift test
+      - name: sleep
+        run: ./myscript.sh
+        
 
 
