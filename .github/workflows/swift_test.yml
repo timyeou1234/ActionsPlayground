@@ -4,13 +4,22 @@ on: [push]
 
 jobs:
   build:
-
+    name: Run Mock Tests
     runs-on: self-hosted
 
     steps:
-      - uses: actions/checkout@v3
-      - name: sleep
-        run: ./myscript.sh
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Run Mock Tests
+        run: |
+          echo "Running mock tests..."
+          ./myscript.sh
         
 
 
