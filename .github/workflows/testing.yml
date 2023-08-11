@@ -12,9 +12,18 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  Testing:
-    name: Test one
+  autoupdate:
+    name: autoupdate
     runs-on: self-hosted
+    timeout-minutes: 30
+    if: github.event.pull_request.draft == false
     steps:
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - uses: docker://chinthakagodawita/autoupdate-action:v1
+        id: autoupdate
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          DRY_RUN: "false"
+          PR_FILTER: "all"
+          EXCLUDED_LABELS: "dependencies,wontfix"
+          MERGE_MSG: "Branch was auto-updated."
+          MERGE_CONFLICT_ACTION: "ignore"
