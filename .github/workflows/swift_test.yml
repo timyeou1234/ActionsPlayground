@@ -1,0 +1,20 @@
+name: Swift
+
+on: [push]
+
+jobs:
+  build:
+    name: Run Mock Tests
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Mock Tests
+        run: |
+          echo "Running mock tests..."
+          ./myscript.sh
+        
+
+

@@ -4,9 +4,7 @@ name: CI
 # Controls when the action will run. 
 on:
   push: {}
-  # Allows you to run this workflow manually from the Actions tab Here is the branch change
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel testing edited
 jobs:
   autoupdate:
     name: autoupdate
